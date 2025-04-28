@@ -3,49 +3,86 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Illustration Portfolio</title>
+  <title>Illustration Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header>
-    <h1>MyPortfolio</h1>
-    <nav>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+  <div class="top-bar">
+    <div class="nav-item" id="btn-2d">2D</div>
+    <div class="nav-item" id="btn-3d">3D</div>
+  </div>
 
-  <section id="portfolio">
-    <h2>Portfolio</h2>
-    <div class="gallery">
-      <div class="item">
-        <img src="your-image1.jpg" alt="Illustration 1">
-      </div>
-      <div class="item">
-        <img src="your-image2.jpg" alt="Illustration 2">
-      </div>
-      <div class="item">
-        <img src="your-image3.jpg" alt="Illustration 3">
-      </div>
-      <!-- Add more items as needed -->
+  <div class="site-logo">
+    <img id="logo-img" src="./img/logotest.png" alt="Logo">
+    <a id="about-link"> <!-- Wrap the image in the anchor tag -->
+      <img id="about-img" src="./img/abouttest.png" alt="About">
+    </a>
+  </div>
+
+  <!-- Hidden About popup -->
+<div id="about-popup" class="popup-overlay">
+  <div class="popup-content">
+    <span id="close-popup">&times;</span>
+    <h2>Illustrator/Visual Designer</h2>
+    <div class="introtext">
+    <h3>About</h3>
+    <p>Sitong is an illustrator inspired by the intersection of myth and reality. Her work reimagines mythical creatures as symbols of identity, resilience, and transformation, creating modern narratives that invite viewers to find wonder in the everyday. 
+      In addition to traditional illustration, she uses 3D to compose narrative scenes and build interactive worlds, expanding the ways stories can be experienced. Sitong studied Illustration at the Rhode Island School of Design (RISD), where she built a strong foundation in visual storytelling and conceptual thinking. 
+      Her practice blends technical skill with a love of narrative, encouraging audiences to rediscover magic in daily life.</p>
+    <h3>Education</h3>
+    <p>Rhode Island School of Design, BA illustration 2025, concentrated in Computation, Technology, & Culture</p>
+    <h3>Award</h3>
+    <p>GoodsHiii Illustration Finalist2023 Ijungle illustration merit award 2023Photoshop</p>
+  </div>
+    <div class="popuplink">
+      <a href=""><img src="./img/ins.png" alt=""></a>
+      <a href=""><img src="./img/ins.png" alt=""></a>
+      <a href=""><img src="./img/ins.png" alt=""></a>
     </div>
-  </section>
+  </div>
+</div>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hello! I'm an illustrator who loves creating colorful, lively artworks. Welcome to my portfolio!</p>
-  </section>
+  <div class="pages">
+    <section class="page" id="page-2d">
+      <div class="content">
+        <aside class="side-nav">
+          <ul>
+            <li>Characters</li>
+            <li>Environments</li>
+            <li>Posters</li>
+          </ul>
+        </aside>
+        <main class="gallery-area">
+          <h1>2D Works</h1>
+          <div class="gallery">
+            <img src="your-2d-image1.jpg" alt="2D Work 1">
+            <img src="your-2d-image2.jpg" alt="2D Work 2">
+          </div>
+        </main>
+      </div>
+    </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Get in touch: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
-  </section>
+    <section class="page" id="page-3d">
+      <div class="content">
+        <aside class="side-nav">
+          <ul>
+            <li>Models</li>
+            <li>Animations</li>
+            <li>Renderings</li>
+          </ul>
+        </aside>
+        <main class="gallery-area">
+          <h1>3D Works</h1>
+          <div class="gallery">
+            <img src="your-3d-image1.jpg" alt="3D Work 1">
+            <img src="your-3d-image2.jpg" alt="3D Work 2">
+          </div>
+        </main>
+      </div>
+    </section>
+  </div>
 
-  <footer>
-    <p>© 2025 My Name. All rights reserved.</p>
-  </footer>
-
+<script src="script.js"></script>
 </body>
 </html>
