@@ -1,7 +1,6 @@
-/* Import fonts just in case you want text elsewhere */
+/* Reset and fonts */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Orbitron:wght@600&display=swap');
 
-/* Reset and basic styles */
 * {
   margin: 0;
   padding: 0;
@@ -15,7 +14,7 @@ body, html {
   font-family: 'Arial', sans-serif;
 }
 
-/* Top bar */
+/* Top nav */
 .top-bar {
   position: fixed;
   top: 20px;
@@ -39,33 +38,30 @@ body, html {
   transform: scale(1.2);
 }
 
-/* Logo */
+/* Logo and About */
 .site-logo {
-    display: flex;
-    align-items: center;
-    height: 200px; /* 250px is a bit too big for logos usually, you can adjust */
-    margin-top: -10px;
-    margin-bottom: -30px;
-    flex-grow: 1;
-  }
-  
-  /* Style both images inside .site-logo */
-  .site-logo img {
-  /* Both images same baseline size */
-    transition: opacity 0.5s ease;
-  }
-  
-  /* Logo image stays at the left */
-  #logo-img {
-    height: 100%;
-  }
-  
-  /* About image pushed to the right */
-  #about-link {
+  display: flex;
+  align-items: center;
+  height: 200px;
+  margin-top: -10px;
+  margin-bottom: -30px;
+  flex-grow: 1;
+}
+
+.site-logo img {
+  transition: opacity 0.5s ease;
+}
+
+#logo-img {
+  height: 100%;
+  cursor: pointer;
+}
+
+#about-link {
   margin-left: auto;
   display: flex;
   align-items: center;
-  text-decoration: none; /* No underline */
+  text-decoration: none;
 }
 
 #about-img {
@@ -75,79 +71,90 @@ body, html {
   cursor: pointer;
 }
 
-
-/* Popup overlay */
-.popup-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(230, 249, 255, 0.7);
-    display: none; /* Initially hidden */
-    justify-content: center;
-    align-items: center;
-    z-index: 2000;
-  }
-  
-  /* Popup content box */
-  .popup-content {
-    background: #fff;
-    padding: 60px;  /* Increase padding for more space inside */
-    border-radius: 35px;
-    max-width: 1000px;  /* Can be adjusted for width */
-    width: 95%;  /* Adjust the width to your preference */
-    max-height: 80%;  /* Set a max height to prevent overflow */
-    height: auto;  /* Allow content to adjust the height automatically */
-    /* text-align: center; */
-    position: relative;
-    overflow-y: auto;  /* Add scroll if content overflows */
-
-  }
-  .popup-content h2{
-    margin-top: -20px;
-    
-  }
-  .introtext{
-    display: flex;
-    flex-direction: column;
-  align-items:flex-start;
-  text-align: left;
-    padding: 20px;
-    gap: 5px;
-  }
-
-  .popuplink{
-    display: flex;
-    justify-content: center;
-    font-style: italic;
-    gap: 20px;
-  }
-  .popuplink img{
-    width: 45px;
-align-items: center;
-  }
-.popuplink a{
-    text-decoration: none;
-}
-  
-  /* Close (×) button */
-  #close-popup {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 30px;
-    cursor: pointer;
-  }
-  /* About image hover effect */
 #about-link:hover #about-img {
-    transform: scale(1.1);
-    transition: transform 0.3s;
-  }
+  transform: scale(1.1);
+}
 
+/* Popup */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(230, 249, 255, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 60px;
+  border-radius: 35px;
+  max-width: 1000px;
+  width: 95%;
+  max-height: 80%;
+  overflow-y: auto;
+  position: relative;
+}
+
+.popup-content h2 {
+  margin-top: -20px;
+}
+
+.selfie-container {
+    float: right;
+    width: 200px;
+    margin: 0 0 1rem 1rem;
+    text-align: center; /* center the caption */
+  }
+  
+  .selfie-img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+  }
+  
+  .selfie-caption {
+    font-size: 0.9rem;
+    color: #555; /* optional: soft gray tone */
+    margin-top: 0.5rem;
+  }
   
 
-/* Pages setup */
+.introtext {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  padding: 20px;
+  gap: 5px;
+}
+.introtext ul{
+    list-style: none;
+}
+
+.popuplink {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.popuplink img {
+  width: 45px;
+}
+
+#close-popup {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* Pages */
 .pages {
   display: flex;
   width: 200%;
@@ -168,16 +175,14 @@ align-items: center;
   height: 100%;
 }
 
-/* Side nav inside gallery */
 .side-nav {
   width: 180px;
   background-color: #ffffff;
-  color: #fff;
+  color: #222;
   padding: 30px 20px;
   position: sticky;
   top: 100px;
   align-self: flex-start;
-  height: fit-content;
 }
 
 .side-nav ul {
@@ -189,19 +194,17 @@ align-items: center;
   font-size: 18px;
   cursor: pointer;
   transition: color 0.3s;
-  color: #222;
 }
 
 .side-nav li:hover {
   color: #ff7f50;
 }
 
-/* Gallery Area */
 .gallery-area {
   flex: 1;
   padding: 100px 40px 40px 40px;
   overflow-y: auto;
-  background: #f0f0f0;
+  background: #ffffff;
   display: flex;
   flex-direction: column;
 }

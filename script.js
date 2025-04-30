@@ -2,50 +2,78 @@ const btn2d = document.getElementById('btn-2d');
 const btn3d = document.getElementById('btn-3d');
 const pages = document.querySelector('.pages');
 const logoImg = document.getElementById('logo-img');
-const AboutImg = document.getElementById('about-img');
+const aboutImg = document.getElementById('about-img');
 const aboutLink = document.getElementById('about-link');
 const aboutPopup = document.getElementById('about-popup');
 const closePopup = document.getElementById('close-popup');
 
+let currentPage = '2d'; // Track current active page
+
+// Navigate to 2D
 btn2d.addEventListener('click', () => {
   pages.style.transform = 'translateX(0)';
-  logoImg.style.opacity = '0';
-  setTimeout(() => {
-    logoImg.src = './img/logotest.png'; // change to your 2D logo
-    logoImg.style.opacity = '1';
-  }, 300);
-  setTimeout(() => {
-    aboutImg.src = './img/abouttest.png'; // change to your 2D about
-    aboutImg.style.opacity = '1';
-  }, 300);
+  fadeSwapImage(logoImg, './img/logotest.png');
+  fadeSwapImage(aboutImg, './img/abouttest.png');
+  currentPage = '2d';
+  resetGallery('2d');
 });
 
+// Navigate to 3D
 btn3d.addEventListener('click', () => {
   pages.style.transform = 'translateX(-50%)';
-  logoImg.style.opacity = '0';
-  setTimeout(() => {
-    logoImg.src = './img/logotest.png'; // change to your 3D logo
-    logoImg.style.opacity = '1';
-  }, 300);
-  setTimeout(() => {
-    aboutImg.src = './img/abouttest.png'; // change to your 3D about
-    aboutImg.style.opacity = '1';
-  }, 300);
+  fadeSwapImage(logoImg, './img/logotest.png');
+  fadeSwapImage(aboutImg, './img/abouttest.png');
+  currentPage = '3d';
+  resetGallery('3d');
 });
 
- // When you click the about image
- aboutLink.addEventListener('click', (event) => {
-    event.preventDefault(); // Prevent the link from jumping
-    aboutPopup.style.display = 'flex'; // Show the popup
+// Fade swap helper
+function fadeSwapImage(imgElement, newSrc) {
+  imgElement.style.opacity = '0';
+  setTimeout(() => {
+    imgElement.src = newSrc;
+    imgElement.style.opacity = '1';
+  }, 300);
+}
+
+// Open popup
+aboutLink.addEventListener('click', (e) => {
+  e.preventDefault();
+  aboutPopup.style.display = 'flex';
+});
+
+// Close popup
+closePopup.addEventListener('click', () => {
+  aboutPopup.style.display = 'none';
+});
+
+window.addEventListener('click', (e) => {
+  if (e.target === aboutPopup) {
+    aboutPopup.style.display = 'none';
+  }
+});
+
+// Filter function
+function filterGallery(section, category) {
+  const gallery = document.getElementById(`gallery-${section}`);
+  const images = gallery.querySelectorAll('img');
+  images.forEach(img => {
+    img.style.display = img.dataset.category === category ? 'block' : 'none';
   });
-  
-  closePopup.addEventListener('click', () => {
-    aboutPopup.style.display = 'none'; // Close the popup
+}
+
+// Reset gallery
+function resetGallery(section) {
+  const gallery = document.getElementById(`gallery-${section}`);
+  const images = gallery.querySelectorAll('img');
+  images.forEach(img => {
+    img.style.display = 'block';
   });
-  
-  // Close popup if clicked outside
-  window.addEventListener('click', (event) => {
-    if (event.target === aboutPopup) {
-      aboutPopup.style.display = 'none';
-    }
-  });
+}
+
+// Logo click = reset current page's gallery (stay on same page)
+logoImg.addEventListener('click', () => {
+  fadeSwapImage(logoImg, './img/logotest.png');
+  fadeSwapImage(aboutImg, './img/abouttest.png');
+  resetGallery(currentPage);
+});
